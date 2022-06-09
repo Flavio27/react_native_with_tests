@@ -26,7 +26,7 @@ describe('PostList.jsx', () => {
     
     await waitFor(() => {
       expect(mockGetPosts).toHaveBeenCalledTimes(1)
-      // expect(getByText('Name 1')).toBeVisible()
+      expect(getByText('Name 1')).toBeVisible()
       console.log(toJSON())
     })
   })
