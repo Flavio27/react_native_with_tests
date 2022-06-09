@@ -1,0 +1,12 @@
+{
+  "posts": [
+    { "id": 1, "name": "NAME 1"},
+    { "id": 2, "name": "NAME 2"},
+    { "id": 3, "name": "NAME 3"}
+  ],
+  "comments": [
+    { "id": 1, "body": "some comment 1", "postId": 1 },
+    { "id": 2, "body": "some comment 2", "postId": 2 },
+    { "id": 3, "body": "some comment 3", "postId": 3 }
+  ]
+}
