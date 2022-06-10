@@ -1,17 +1,19 @@
-import React, { useState, useEffect, useCallback } from 'react'
-import {
-  View, Text, Button, FlatList,
-} from 'react-native'
+import { useCallback, useEffect } from 'react'
+import { FlatList, Text } from 'react-native'
+import { useRecoilState } from 'recoil'
 import { capitalizeString } from '../../Helpers/capitalizeString'
 import { getPosts } from '../../Services/getPosts'
+import { postListState, postNameState } from '../../Storage/atoms'
+import PrintName from '../PrintName'
 import * as S from './PostList.styles'
 
 export default () => {
-  const [post, setPost] = useState([])
+  const [postList, setPostList] = useRecoilState(postListState)
+  const [_, setName] = useRecoilState(postNameState)
 
   const getPost = async () => {
     const posts = await getPosts()
-    setPost(posts)
+    setPostList(posts)
   }
 
   useEffect(() => {
@@ -19,19 +21,25 @@ export default () => {
   }, [])
 
   const renderPost = useCallback(
-    ({ item }) => <Text>ID: {item.id} - Name: {capitalizeString(item?.name)}</Text>,
+    ({ item }) => <S.Post>ID: {item.id} - Name: {capitalizeString(item?.name)}</S.Post>,
     [],
   )
 
   const keyExtractor = useCallback((post) => post.id.toString(), [])
 
   return (
-    <View>
+    <S.Container>
       <FlatList
-        data={post}
+        data={postList}
         renderItem={renderPost}
         keyExtractor={keyExtractor}
+
       />
-    </View>
+      <S.SearchNameInput
+        onChangeText={setName}
+        placeholder='search name...'
+      />
+      <PrintName/>
+    </S.Container>
   )
 }

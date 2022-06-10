@@ -1,11 +1,14 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import PostList from './src/Components/PostList/PostList'
+import { RecoilRoot } from 'recoil'
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <PostList/>
+      <RecoilRoot>
+        <PostList/>
+      </RecoilRoot>
     </View>
   )
 }
