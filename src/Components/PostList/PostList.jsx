@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import { View, Text, Button } from 'react-native'
+import React, { useState, useEffect, useCallback } from 'react'
+import {
+  View, Text, Button, FlatList,
+} from 'react-native'
 import { capitalizeString } from '../../Helpers/capitalizeString'
 import { getPosts } from '../../Services/getPosts'
 import * as S from './PostList.styles'
@@ -16,13 +18,20 @@ export default () => {
     getPost()
   }, [])
 
+  const renderPost = useCallback(
+    ({ item }) => <Text>ID: {item.id} - Name: {capitalizeString(item?.name)}</Text>,
+    [],
+  )
+
+  const keyExtractor = useCallback((post) => post.id.toString(), [])
+
   return (
     <View>
-      {post.map(({ id, name }) => (
-        <S.PostList key={name}>
-          <Text>ID: {id} - Name: {capitalizeString(name)}</Text>
-        </S.PostList>
-      ))}
+      <FlatList
+        data={post}
+        renderItem={renderPost}
+        keyExtractor={keyExtractor}
+      />
     </View>
   )
 }

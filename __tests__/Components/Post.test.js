@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen, waitFor } from '@testing-library/react-native'
+import { render, waitFor } from '@testing-library/react-native'
 import PostList from '../../src/Components/PostList'
 
 afterEach(() => {
@@ -21,12 +21,10 @@ jest.mock('../../src/Services/getPosts', () => ({
 
 describe('PostList.jsx', () => {
   test('Should call getPosts on render', async () => {
-    const { getByText, toJSON } = render(<PostList/>)
+    render(<PostList/>)
 
     await waitFor(() => {
       expect(mockGetPosts).toHaveBeenCalledTimes(1)
-      // expect(getByText('Name 1')).toBeVisible()
-      console.log(toJSON())
     })
   })
 })

@@ -1,13 +1,13 @@
-import React from "react"
-import { StyleSheet, View } from 'react-native';
-import PostList from './src/Components/PostList/PostList';
+import React from 'react'
+import { StyleSheet, View } from 'react-native'
+import PostList from './src/Components/PostList/PostList'
 
 export default function App() {
   return (
     <View style={styles.container}>
       <PostList/>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -17,4 +17,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-});
+})
