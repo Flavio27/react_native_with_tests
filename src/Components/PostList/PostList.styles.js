@@ -5,10 +5,22 @@ export const Container = styled.View`
   align-items: center;
   width: 100%;
 `
-export const Post = styled.Text`
+export const postCard = styled.TouchableOpacity`
 width: 200px;
-padding: 3px;
-border: 1px solid #000;
+height: 50px;
+margin: 5px;
+background-color: #e1e1e1;
+justify-content: center;
+align-items: center;
+border-radius: 3px;
+elevation: 4;
+`
+
+export const postText = styled.Text`
+font-weight: bold;
+font-size: 18px;
+color: #545454
+
 `
 
 export const SearchNameInput = styled.TextInput`

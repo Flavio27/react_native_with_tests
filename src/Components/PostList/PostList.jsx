@@ -1,5 +1,5 @@
 import { useCallback, useEffect } from 'react'
-import { FlatList, Text } from 'react-native'
+import { FlatList } from 'react-native'
 import { useRecoilState } from 'recoil'
 import { capitalizeString } from '../../Helpers/capitalizeString'
 import { getPosts } from '../../Services/getPosts'
@@ -21,7 +21,11 @@ export default () => {
   }, [])
 
   const renderPost = useCallback(
-    ({ item }) => <S.Post>ID: {item.id} - Name: {capitalizeString(item?.name)}</S.Post>,
+    ({ item }) => (
+      <S.postCard onPress={() => { console.log(item) }}>
+        <S.postText>{capitalizeString(item?.name)}</S.postText>
+      </S.postCard>
+    ),
     [],
   )
 
