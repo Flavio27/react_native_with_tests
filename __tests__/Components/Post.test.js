@@ -1,6 +1,7 @@
 import React from 'react'
 import { render, waitFor } from '@testing-library/react-native'
 import PostList from '../../src/Components/PostList'
+import { RecoilRoot } from 'recoil'
 
 afterEach(() => {
   jest.clearAllMocks()
@@ -21,7 +22,11 @@ jest.mock('../../src/Services/getPosts', () => ({
 
 describe('PostList.jsx', () => {
   test('Should call getPosts on render', async () => {
-    render(<PostList/>)
+    render(
+      <RecoilRoot>
+        <PostList/>
+      </RecoilRoot>,
+    )
 
     await waitFor(() => {
       expect(mockGetPosts).toHaveBeenCalledTimes(1)
