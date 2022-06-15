@@ -3,14 +3,19 @@ import { FlatList } from 'react-native'
 import { useRecoilState } from 'recoil'
 import { capitalizeString } from '../../Helpers/capitalizeString'
 import { getPosts } from '../../Services/getPosts'
-import { postListState, postNameState } from '../../Storage/atoms'
+import { postListState, postNameState, selectedPostState } from '../../Storage/atoms'
 import PrintName from '../PrintName'
 import * as S from './PostList.styles'
 
-export default () => {
+export default ({ navigation }) => {
   const [postList, setPostList] = useRecoilState(postListState)
-  const [_, setName] = useRecoilState(postNameState)
+  const [, setName] = useRecoilState(postNameState)
+  const [, setPostedSelected] = useRecoilState(selectedPostState)
 
+  const handlePostClick = (item) => {
+    setPostedSelected(item)
+    navigation.navigate('Details')
+  }
   const getPost = async () => {
     const posts = await getPosts()
     setPostList(posts)
@@ -22,7 +27,7 @@ export default () => {
 
   const renderPost = useCallback(
     ({ item }) => (
-      <S.postCard onPress={() => { console.log(item) }}>
+      <S.postCard onPress={() => { handlePostClick(item) }}>
         <S.postText>{capitalizeString(item?.name)}</S.postText>
       </S.postCard>
     ),

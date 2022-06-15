@@ -1,8 +1,20 @@
 {
   "posts": [
-    { "id": 1, "name": "Arwen"},
-    { "id": 2, "name": "Gandalf"},
-    { "id": 3, "name": "Saruman"}
+    {
+      "id": 1,
+      "name": "Arwen",
+      "description": "Arwen é uma dos Meio-Elfos que viveram durante a Terceira Era. Era extremamente parecida com Lúthien Tinúviel."
+    },
+    {
+      "id": 2,
+      "name": "Gandalf",
+      "description": "Gandalf é um Mago Istari, pertencente à raça dos Maiar."
+    },
+    {
+      "id": 3,
+      "name": "Saruman",
+      "description": "Saruman o Branco, foi o primeiro da ordem dos Istar (feiticeiro), que veio para a Terra-Média como emissário dos Valar"
+    }
   ],
   "comments": [
     { "id": 1, "body": "some comment 1", "postId": 1 },
