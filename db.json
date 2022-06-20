@@ -3,17 +3,20 @@
     {
       "id": 1,
       "name": "Arwen",
-      "description": "Arwen é uma dos Meio-Elfos que viveram durante a Terceira Era. Era extremamente parecida com Lúthien Tinúviel."
+      "description": "Arwen é a filha mais nova de Elrond e Celebrían. Seus irmãos mais velhos são os gêmeos Elladan e Elrohir. Seu nome Ar-wen significa 'nobre donzela'. Ela concebeu a alcunha de 'Estrela Vespertina' (ou Estrela da Noite), como a mais bonita da última geração dos Altos Elfos na Terra Média.",
+      "img": "https://mir-s3-cdn-cf.behance.net/projects/404/b8d0cc128940623.Y3JvcCwzMDAwLDIzNDYsMCw2NzU.jpg"
     },
     {
       "id": 2,
       "name": "Gandalf",
-      "description": "Gandalf é um Mago Istari, pertencente à raça dos Maiar."
+      "description": "Gandalf, o Cinzento, mais tarde conhecido como Gandalf, o Branco também chamado de Olórin , Tharkun e Mithrandir era um Mago, ou Istari, que veio do Oeste na Terceira Era para combater Sauron. Gandalf acompanhou a Thorin II Escudo de Carvalho na missão para recuperar Erebor e mais tarde foi um membro da Sociedade do Anel.",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/GANDALF.jpg/400px-GANDALF.jpg"
     },
     {
       "id": 3,
       "name": "Saruman",
-      "description": "Saruman o Branco, foi o primeiro da ordem dos Istar (feiticeiro), que veio para a Terra-Média como emissário dos Valar"
+      "description": "Saruman, também conhecido como Saruman o Branco, foi o primeiro da ordem dos Istar (feiticeiro), que veio para a Terra-Média como emissário dos Valar na Terceira Era. Ele também foi líder dos magos e do Conselho Branco que se opunha a Sauron. Seu profuso estudo sobre magia negra, no entanto, o levou a desejar o Um Anel.",
+      "img": "https://i.pinimg.com/originals/7e/e7/ac/7ee7ac2b9da639c4bd036120da06a295.jpg"
     }
   ],
   "comments": [
