@@ -9,3 +9,8 @@ export const postListState = atom({
   key: 'postList',
   default: [],
 })
+
+export const selectedPostState = atom({
+  key: 'selectedPost',
+  default: {},
+})

@@ -1,16 +1,19 @@
 import { useCallback, useEffect } from 'react'
-import { FlatList, Text } from 'react-native'
+import { FlatList } from 'react-native'
 import { useRecoilState } from 'recoil'
 import { capitalizeString } from '../../Helpers/capitalizeString'
 import { getPosts } from '../../Services/getPosts'
-import { postListState, postNameState } from '../../Storage/atoms'
-import PrintName from '../PrintName'
+import { postListState, selectedPostState } from '../../Storage/atoms'
 import * as S from './PostList.styles'
 
-export default () => {
+export default ({ navigation }) => {
   const [postList, setPostList] = useRecoilState(postListState)
-  const [_, setName] = useRecoilState(postNameState)
+  const [, setPostedSelected] = useRecoilState(selectedPostState)
 
+  const handlePostClick = (item) => {
+    setPostedSelected(item)
+    navigation.navigate('Detalhes')
+  }
   const getPost = async () => {
     const posts = await getPosts()
     setPostList(posts)
@@ -21,7 +24,11 @@ export default () => {
   }, [])
 
   const renderPost = useCallback(
-    ({ item }) => <S.Post>ID: {item.id} - Name: {capitalizeString(item?.name)}</S.Post>,
+    ({ item }) => (
+      <S.postCard onPress={() => { handlePostClick(item) }}>
+        <S.postText>{capitalizeString(item?.name)}</S.postText>
+      </S.postCard>
+    ),
     [],
   )
 
@@ -33,13 +40,8 @@ export default () => {
         data={postList}
         renderItem={renderPost}
         keyExtractor={keyExtractor}
-
+        contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
       />
-      <S.SearchNameInput
-        onChangeText={setName}
-        placeholder='search name...'
-      />
-      <PrintName/>
     </S.Container>
   )
 }
