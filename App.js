@@ -1,6 +1,6 @@
 import React from 'react'
 import { RecoilRoot } from 'recoil'
-import AppRoutes from './src/Routes/AppARoutes'
+import AppRoutes from './src/Routes/AppRoutes'
 
 export default function App() {
   return (
