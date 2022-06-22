@@ -4,18 +4,16 @@ jest.mock('../../src/Services/api')
 
 const mockDb = {
   comments: [],
-  posts: []
+  posts: [],
 }
 
-const mockGet = (response) => {
-  return new Promise((resolve) =>{
-    setTimeout(() => {
-      resolve({
-        data: response
-      })
-    }, 200);
-  })
-}
+const mockGet = (response) => new Promise((resolve) => {
+  setTimeout(() => {
+    resolve({
+      data: response,
+    })
+  }, 200)
+})
 
 describe('api.js', () => {
   test('Should return a request', async () => {
