@@ -37,6 +37,7 @@
       "react/prop-types": [0],
       "react/react-in-jsx-scope": [0],
       "react/require-default-props": "off",
+      "react/no-unstable-nested-components": [0],
       "semi": ["error", "never"],
       "react/jsx-filename-extension": [0, { "allow": "as-needed" }]
     },
