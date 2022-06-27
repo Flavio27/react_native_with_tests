@@ -1,9 +1,12 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react-native'
+import { toBeEmpty, toHaveTextContent } from '@testing-library/jest-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { RecoilRoot } from 'recoil'
 import DetailsRoutes from '../../src/Routes/DetailsRoutes'
 import { selectedPostState } from '../../src/Storage/atoms'
+
+expect.extend({ toBeEmpty, toHaveTextContent })
 
 afterEach(() => {
   jest.clearAllMocks()
@@ -15,6 +18,7 @@ const mockSelectedPostState = {
   name: 'Name test',
   description: 'Description test',
   img: 'http://imgtest.test',
+  gallery: ['http://imgGallery1.test'],
 }
 
 describe('DetailsRoutes.jsx', () => {
@@ -44,7 +48,9 @@ describe('DetailsRoutes.jsx', () => {
   })
 
   test('Should change tab when pressed', async () => {
-    const { getByText, queryByText } = render(component)
+    const {
+      getByText, queryByText, getByTestId,
+    } = render(component)
     const gallery = getByText('Galeria')
 
     expect(queryByText('Galeria!')).toBe(null)
@@ -52,6 +58,49 @@ describe('DetailsRoutes.jsx', () => {
     expect(getByText('Description test')).toBeTruthy()
 
     fireEvent(gallery, 'press')
-    expect(getByText('Galeria!')).toBeTruthy()
+    expect(getByTestId(mockSelectedPostState.gallery[0]))
+  })
+
+  test('Should expand a photo of gallery when pressed', async () => {
+    const {
+      getByText, queryByText, getByTestId, queryByLabelText,
+    } = render(component)
+    const gallery = getByText('Galeria')
+
+    expect(queryByText('Galeria!')).toBe(null)
+    expect(getByText('Name test')).toBeTruthy()
+    expect(getByText('Description test')).toBeTruthy()
+
+    fireEvent(gallery, 'press')
+    const photoGallery = getByTestId(mockSelectedPostState.gallery[0])
+
+    expect(queryByLabelText('expandedPhoto')).toBe(null)
+    fireEvent(photoGallery, 'press')
+
+    expect(queryByLabelText('expandedPhoto')).toBeTruthy()
+  })
+
+  test('Should close expand a photo of gallery when pressed', async () => {
+    const {
+      getByText, queryByText, getByTestId, queryByLabelText,
+    } = render(component)
+    const gallery = getByText('Galeria')
+
+    expect(queryByText('Galeria!')).toBe(null)
+    expect(getByText('Name test')).toBeTruthy()
+    expect(getByText('Description test')).toBeTruthy()
+
+    fireEvent(gallery, 'press')
+    const photoGallery = getByTestId(mockSelectedPostState.gallery[0])
+
+    expect(queryByLabelText('expandedPhoto')).toBe(null)
+    fireEvent(photoGallery, 'press')
+
+    expect(queryByLabelText('expandedPhoto')).toBeTruthy()
+
+    const expandedPhotoContainer = queryByLabelText('expandedPhotoContainer')
+    fireEvent(expandedPhotoContainer, 'press')
+
+    expect(queryByLabelText('expandedPhoto')).toBe(null)
   })
 })
