@@ -1,8 +1,8 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native'
-import { Text, View } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import Details from '../Components/Details'
+import Gallery from '../Components/Gallery/Gallery'
 
 const icon = ({
   name, size, color, focused,
@@ -10,13 +10,6 @@ const icon = ({
   <Ionicons name={name} size={size} color={color} focused={focused}/>
 )
 
-function SettingsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Galeria!</Text>
-    </View>
-  )
-}
 const DetailsRoutes = () => {
   const Tab = createBottomTabNavigator()
   return (
@@ -37,7 +30,7 @@ const DetailsRoutes = () => {
       />
       <Tab.Screen
         name='Galeria'
-        component={SettingsScreen}
+        component={Gallery}
         options={{
           headerShown: false,
           tabBarIcon: (props) => icon({ ...props, name: 'images-outline' }),

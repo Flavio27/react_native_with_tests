@@ -7,7 +7,7 @@ const AppRoutes = () => {
   const Stack = createNativeStackNavigator()
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='PostList'>
+      <Stack.Navigator initialRouteName='Personagens'>
         <Stack.Screen name='Personagens' component={PostList} />
         <Stack.Screen name='Detalhes' component={DetailsRoutes} />
       </Stack.Navigator>
